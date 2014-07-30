@@ -25,13 +25,14 @@ def blinker (times):
 
 
 def main():
-    print 'Welcome To ThermoMaster demo"
+    print "Welcome To ThermoMaster demo"
     blinker(3)
-    print 'Hit the switch to get going"
+    print "Hit the switch to get going"
     while True:
         if GPIO.input(22):
             break
     blinker(2)
+    
     print "start"
     messenger = Messenger()
     message = Message()
