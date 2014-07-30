@@ -3,10 +3,10 @@ import RPi.GPIO as GPIO
 import time as time
 from proton import *
 
-GPIO.setmode (GPIO.BOARD)
+GPIO.setmode (GPIO.BCM)
 
 GPIO.setup (22, GPIO.IN )
-GPIO.setup (17,GPIO.OUT )
+GPIO.setup (17, GPIO.OUT )
 GPIO.setup (11, GPIO.OUT)
 
 LED_STAT = False
