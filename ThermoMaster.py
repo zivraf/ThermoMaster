@@ -44,24 +44,25 @@ def main():
 
     datafile = open ("tempreading.log","w")
 
-    while True:
-        GPIO.output (17, GPIO.HIGH)
-        tfile = open ("/sys/bus/w1/devices/28-000005658920/w1_slave")
-        text = tfile.read()
-        tfile.close()
-        secondline = text.split ("\n")[1]
-        tempData = secondline.split(" ")[9]
-        temprature = float (tempData[2:])
-        temprature = temprature / 1000
-        print temprature
-        datafile.write(str(temprature)+ "\n")
-        time.sleep (1)
-        GPIO.output (17, GPIO.LOW)
-        time. sleep (1)
-        if GPIO.input (22)==1:
-            break
-    datafile.close()
+    print "--reading temprature"
+
+    GPIO.output (17, GPIO.HIGH)
+    tfile = open ("/sys/bus/w1/devices/28-000005658920/w1_slave")
+    text = tfile.read()
+    tfile.close()
+    print "-- closed dev file"
+    secondline = text.split ("\n")[1]
+    tempData = secondline.split(" ")[9]
+    temprature = float (tempData[2:])
+    temprature = temprature / 1000
+    print "-- temprature is " + temprature
+    datafile.write(str(temprature)+ "\n")
+    time.sleep (1)
     GPIO.output (17, GPIO.LOW)
+    time. sleep (1)
+   
+    datafile.close()
+    printf "--exit"
 
 
 
