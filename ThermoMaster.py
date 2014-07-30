@@ -32,11 +32,11 @@ def main():
         if GPIO.input(22):
             break
     blinker(2)
-    
+
     print "start"
     messenger = Messenger()
     message = Message()
-    message.address = "amqps://owner:BFHk1n+EmRpTpbMtIH53zwcYxEpcDke/DLv1MOeKa1w=@thermomaster.servicebus.windows.net/statusupdt
+    message.address = "amqps://owner:BFHk1n+EmRpTpbMtIH53zwcYxEpcDke/DLv1MOeKa1w=@thermomaster.servicebus.windows.net/statusupdt"
 
     message.body = u"This is a text string"
     messenger.put(message)
