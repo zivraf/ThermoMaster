@@ -62,7 +62,7 @@ def main():
     time. sleep (1)
    
     datafile.close()
-    printf "--Leaving Main"
+    print "--Leaving Main"
 
 
 
