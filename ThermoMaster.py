@@ -33,8 +33,8 @@ def main():
     blinker(3)
     print "Hit the switch to get going"
     while True:
-        buttonIn not GPIO.input(15)
-        if buttonIn = True:
+        buttonIn = not GPIO.input(15)
+        if buttonIn:
             break
         
     blinker(2)
