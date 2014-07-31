@@ -67,7 +67,7 @@ def main():
         
     blinker(2)
 
-    GPIO.add_event_detect (BUTTON_PIN, GPIO.RISING, callback= buttonCallBack, councetime=500)
+    GPIO.add_event_detect (BUTTON_PIN, GPIO.RISING, callback= buttonCallBack, bouncetime=500)
     print "start"
     messenger = Messenger()
     message = Message()
