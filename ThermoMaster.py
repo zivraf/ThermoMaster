@@ -1,6 +1,8 @@
 import sys, optparse
 import RPi.GPIO as GPIO
 import time as time
+import datetime
+from time import gmtime, strftime
 from proton import *
 
 GPIO.setmode (GPIO.BOARD)
@@ -25,7 +27,6 @@ def blinker (times):
         GPIO.output(11,True)
 
 
-
 def main():
     print "Welcome To ThermoMaster demo"
     blinker(3)
@@ -40,10 +41,6 @@ def main():
     message = Message()
     message.address = "amqps://owner:BFHk1n+EmRpTpbMtIH53zwcYxEpcDke/DLv1MOeKa1w=@thermomaster.servicebus.windows.net/statusupdt"
 
-    message.body = u"This is a text string"
-    messenger.put(message)
-    messenger.send()
-
     datafile = open ("tempreading.log","w")
 
     print "--reading temprature"
@@ -57,8 +54,20 @@ def main():
     tempData = secondline.split(" ")[9]
     temprature = float (tempData[2:])
     temprature = temprature / 1000
-    print "-- temprature is " + temprature
+    print "-- temprature is " , temprature
     datafile.write(str(temprature)+ "\n")
+
+    
+    message.body = u"TThermoMaster 1.0"
+    message.subject = u"ThermoMaster Status Update"
+    message.properties [u"UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    message.properties [u"DeviceId"] = "28-000005658920"
+    message.properties [u"Temprature"] = temprature
+
+    messenger.put(message)
+    messenger.send()
+
+ 
     time.sleep (1)
     GPIO.output (7, GPIO.LOW)
     time. sleep (1)
