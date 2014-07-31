@@ -88,7 +88,7 @@ def main():
         tempData = secondline.split(" ")[9]
         temprature = float (tempData[2:])
         temprature = temprature / 1000
-        print "-- temprature is " , temprature
+        print "-- temprature is  " , temprature
         datafile.write(str(temprature)+ "\n")
 
 
