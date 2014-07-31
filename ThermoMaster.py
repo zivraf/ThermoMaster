@@ -61,9 +61,9 @@ def main():
     message.body = "ThermoMaster 1.0 - Status Update"
     message.properties = dict()
     #message.subject = u"ThermoMaster Status Update"
-    message.properties ["UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    message.properties ["DeviceId"] = "28-000005658920"
-    message.properties ["Temprature"] = temprature
+    message.properties [u"UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    message.properties [u"DeviceId"] = "28-000005658920"
+    message.properties [u"Temprature"] = temprature
     
     print "-- Message properties ", message.properties
 
