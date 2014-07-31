@@ -33,7 +33,7 @@ def main():
     blinker(3)
     print "Hit the switch to get going"
     while True:
-        buttonIn = not GPIO.input(15)
+        buttonIn = GPIO.input(15)
         if buttonIn:
             break
         
@@ -66,7 +66,7 @@ def main():
     #message.subject = u"ThermoMaster Status Update"
     #message.properties [u"UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     #message.properties [u"DeviceId"] = "28-000005658920"
-    #message.properties [u"Temprature"] = temprature
+    message.properties ["Temprature"] = temprature
     
     print "-- Message properties ", message.properties
 
