@@ -62,12 +62,16 @@ def main():
 
 
     message.body = u"ThermoMaster 1.0 - Status Update"
-    message.properties = dict()
+    prop = {}
+    prop ["DeviceId"] = "28-000005658920"
+    prop ["Temprature"] = temprature
+
+    message.properties = prop
     #message.subject = u"ThermoMaster Status Update"
     currTime = (strftime(u"%Y-%m-%d %H:%M:%S", gmtime())
     #message.properties [u"UpdateTime"] = currTime
-    message.properties [u"DeviceId"] = "28-000005658920"
-    message.properties [u"Temprature"] = temprature
+    #message.properties [u"DeviceId"] = "28-000005658920"
+    #message.properties [u"Temprature"] = temprature
     
     print "-- Message properties ", message.properties
 
