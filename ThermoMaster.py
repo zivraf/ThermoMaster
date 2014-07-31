@@ -24,7 +24,7 @@ def blinker (times):
         GPIO.output(11,False)
         time.sleep (1)
         index = index + 1
-    if LED_STAT ==True:
+    if LED_STAT = True:
         GPIO.output(11,True)
 
 
@@ -33,11 +33,10 @@ def main():
     blinker(3)
     print "Hit the switch to get going"
     while True:
-        if GPIO.input(15)=False:
+        buttonIn not GPIO.input(15)
+        if buttonIn = True:
             break
-        else:
-            print (".")
-            time.sleep(1)
+        
     blinker(2)
 
     print "start"
@@ -65,9 +64,9 @@ def main():
     message.body = "ThermoMaster 1.0 - Status Update"
     message.properties = dict()
     #message.subject = u"ThermoMaster Status Update"
-    message.properties [u"UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    message.properties [u"DeviceId"] = "28-000005658920"
-    message.properties [u"Temprature"] = temprature
+    #message.properties [u"UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    #message.properties [u"DeviceId"] = "28-000005658920"
+    #message.properties [u"Temprature"] = temprature
     
     print "-- Message properties ", message.properties
 
