@@ -43,6 +43,19 @@ def buttonCallBack (channel):
         print "--turn on"
         LED_STAT = True    
     GPIO.output (LED_PIN,LED_STAT)
+    message = Message()
+    message.address = AMQP_CONN_STR
+
+    message.body = u"ThermoMaster 1.0 - Status Update"
+    prop = {}
+    prop [u"DeviceId"] = u"28-000005658920"
+    prop [u"Status"] = LED_STAT
+
+    message.properties = prop
+    print "-- Message properties ", message.properties
+    messenger.put(message)
+    messenger.send()
+
 
 def sendMessage (oper, value):
     message = Message()
@@ -72,16 +85,14 @@ def main():
     GPIO.add_event_detect (BUTTON_PIN, GPIO.RISING, callback= buttonCallBack, bouncetime=500)
     print "start"
     messenger = Messenger()
-    message = Message()
-    message.address = "amqps://owner:BFHk1n+EmRpTpbMtIH53zwcYxEpcDke/DLv1MOeKa1w=@thermomaster.servicebus.windows.net/statusupdt"
-
+  
     datafile = open ("tempreading.log","w")
 
     while True:
 
         print "--reading temprature"
 
-        GPIO.output (7, GPIO.HIGH)
+        GPIO.output (SENSOR_PIN, GPIO.HIGH)
         tfile = open ("/sys/bus/w1/devices/28-000005658920/w1_slave")
         text = tfile.read()
         tfile.close()
@@ -93,6 +104,8 @@ def main():
         print "-- temprature is  " , temprature
         datafile.write(str(temprature)+ "\n")
 
+        message = Message()
+        message.address = AMQP_CONN_STR
 
         message.body = u"ThermoMaster 1.0 - Status Update"
         prop = {}
@@ -116,7 +129,7 @@ def main():
 
      
         time.sleep (1)
-        GPIO.output (7, GPIO.LOW)
+        GPIO.output (SENSOR_PIN, GPIO.LOW)
 
         time.sleep (10)
    
