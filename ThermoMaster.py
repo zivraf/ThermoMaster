@@ -20,9 +20,9 @@ def blinker (times):
     while (index < times):
         print "--Blink ", index+1
         GPIO.output(11, True)
-        time.sleep (1)
+        time.sleep (.2)
         GPIO.output(11,False)
-        time.sleep (1)
+        time.sleep (.2)
         index = index + 1
     if LED_STAT == True:
         GPIO.output(11,True)
@@ -66,7 +66,7 @@ def main():
     #message.subject = u"ThermoMaster Status Update"
     #message.properties [u"UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     #message.properties [u"DeviceId"] = "28-000005658920"
-    message.properties ["Temprature"] = temprature
+    message.properties [u"Temprature"] = temprature
     
     print "-- Message properties ", message.properties
 
