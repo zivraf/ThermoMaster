@@ -5,8 +5,8 @@ from proton import *
 
 GPIO.setmode (GPIO.BOARD)
 
-GPIO.setup (22, GPIO.IN )
-GPIO.setup (17, GPIO.OUT )
+GPIO.setup (15, GPIO.IN )
+GPIO.setup (7, GPIO.OUT )
 GPIO.setup (11, GPIO.OUT)
 
 LED_STAT = False
@@ -31,7 +31,7 @@ def main():
     blinker(3)
     print "Hit the switch to get going"
     while True:
-        if GPIO.input(22):
+        if GPIO.input(15):
             break
     blinker(2)
 
@@ -48,7 +48,7 @@ def main():
 
     print "--reading temprature"
 
-    GPIO.output (17, GPIO.HIGH)
+    GPIO.output (7, GPIO.HIGH)
     tfile = open ("/sys/bus/w1/devices/28-000005658920/w1_slave")
     text = tfile.read()
     tfile.close()
@@ -60,7 +60,7 @@ def main():
     print "-- temprature is " + temprature
     datafile.write(str(temprature)+ "\n")
     time.sleep (1)
-    GPIO.output (17, GPIO.LOW)
+    GPIO.output (7, GPIO.LOW)
     time. sleep (1)
    
     datafile.close()
