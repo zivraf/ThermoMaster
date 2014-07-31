@@ -59,19 +59,22 @@ def main():
 
 
     message.body = "ThermoMaster 1.0 - Status Update"
-    message.properties = {}
+    message.properties = dict()
     #message.subject = u"ThermoMaster Status Update"
     message.properties ["UpdateTime"] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     message.properties ["DeviceId"] = "28-000005658920"
     message.properties ["Temprature"] = temprature
+    
+    print "-- Message properties ", message.properties
 
     messenger.put(message)
     messenger.send()
 
+    print "-- Message sent"
+
  
     time.sleep (1)
     GPIO.output (7, GPIO.LOW)
-    time. sleep (1)
    
     datafile.close()
     print "--Leaving Main"
