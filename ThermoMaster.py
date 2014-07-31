@@ -98,7 +98,7 @@ def main():
         prop = {}
         prop [u"DeviceId"] = u"28-000005658920"
         currTime =  time.asctime( time.localtime(time.time()) )
-        prop [u"UpdtTime"] = currTime
+        #prop [u"UpdtTime"] = currTime
         prop [u"Temprature"] = temprature
 
         message.properties = prop
