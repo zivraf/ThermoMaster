@@ -67,8 +67,8 @@ def main():
     prop ["Temprature"] = temprature
 
     message.properties = prop
-    #message.subject = u"ThermoMaster Status Update"
-    currTime = (strftime(u"%Y-%m-%d %H:%M:%S", gmtime())
+    message.subject = u"ThermoMaster Status Update"
+    #currTime = strftime(u"%Y-%m-%d %H:%M:%S", gmtime()
     #message.properties [u"UpdateTime"] = currTime
     #message.properties [u"DeviceId"] = "28-000005658920"
     #message.properties [u"Temprature"] = temprature
