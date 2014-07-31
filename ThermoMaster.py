@@ -24,7 +24,7 @@ def blinker (times):
         GPIO.output(11,False)
         time.sleep (1)
         index = index + 1
-    if LED_STAT = True:
+    if LED_STAT == True:
         GPIO.output(11,True)
 
 
