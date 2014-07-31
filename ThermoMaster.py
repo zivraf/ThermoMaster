@@ -34,6 +34,7 @@ def blinker (times):
         GPIO.output(LED_PIN,True)
 
 def buttonCallBack (channel):
+    global LED_STAT
     print "--callback.. prev stat is ", LED_STAT
     if LED_STAT:
         print "--turn off"
