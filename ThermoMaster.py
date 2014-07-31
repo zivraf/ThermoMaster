@@ -19,6 +19,7 @@ SENSOR_PIN = 7
 
 AMQP_CONN_STR = "amqps://owner:BFHk1n+EmRpTpbMtIH53zwcYxEpcDke/DLv1MOeKa1w=@thermomaster.servicebus.windows.net/statusupdt"
 
+
 def blinker (times):
     index = 0
     print "--Blinker ", times, " times"
@@ -33,7 +34,7 @@ def blinker (times):
         GPIO.output(LED_PIN,True)
 
 def buttonCallBack (channel):
-    print "--callback"
+    print "--callback.. prev stat is ", LED_STAT
     if LED_STAT:
         print "--turn off"
         LED_STAT = False
