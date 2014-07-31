@@ -6,6 +6,7 @@ from time import gmtime, strftime
 from proton import *
 
 GPIO.setmode (GPIO.BOARD)
+GPIO.cleanup()
 
 GPIO.setup (15, GPIO.IN )
 GPIO.setup (7, GPIO.OUT )
@@ -32,7 +33,7 @@ def main():
     blinker(3)
     print "Hit the switch to get going"
     while True:
-        if GPIO.input(15)==False:
+        if GPIO.input(15)=False:
             break
         else:
             print (".")
