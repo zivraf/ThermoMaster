@@ -24,13 +24,13 @@ def blinker (times):
     print "--Blinker ", times, " times"
     while (index < times):
         print "--Blink ", index+1
-        GPIO.output(11, True)
+        GPIO.output(LED_PIN, True)
         time.sleep (.2)
-        GPIO.output(11,False)
+        GPIO.output(LED_PIN,False)
         time.sleep (.2)
         index = index + 1
-    if LED_STAT == True:
-        GPIO.output(11,True)
+    if LED_STAT:
+        GPIO.output(LED_PIN,True)
 
 def buttonCallBack (channel):
     print "--callback"
