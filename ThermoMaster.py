@@ -13,11 +13,13 @@ LED_STAT = False
 
 def blinker (times):
     index = 0
+    print "--Blinker ", times, " times"
     while (index < times):
+        print "--Blink ", index+1
         GPIO.output(11, True)
         time.sleep (1)
         GPIO.output(11,False)
-        time.sleep (2)
+        time.sleep (1)
         index = index + 1
     if LED_STAT ==True:
         GPIO.output(11,True)
