@@ -63,8 +63,8 @@ def main():
 
     message.body = u"ThermoMaster 1.0 - Status Update"
     prop = {}
-    prop ["DeviceId"] = "28-000005658920"
-    prop ["Temprature"] = temprature
+    prop [u"DeviceId"] = u"28-000005658920"
+    prop [u"Temprature"] = temprature
 
     message.properties = prop
     #message.subject = u"ThermoMaster Status Update"
