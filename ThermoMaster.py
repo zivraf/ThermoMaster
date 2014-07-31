@@ -34,6 +34,9 @@ def main():
     while True:
         if GPIO.input(15)==False:
             break
+        else:
+            print (".")
+            time.sleep(1)
     blinker(2)
 
     print "start"
